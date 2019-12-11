@@ -15,7 +15,9 @@ import style from './Stat.module.css';
 const Stat = ({ ulClass, list }) => {
   // Create li elements
   const lis = list.map(elem => {
-    const valueClass = elem.class ? style[elem.class] : style.quantity;
+    const valueClass = elem.valueClass
+      ? style[elem.valueClass]
+      : style.quantity;
 
     // Add , to thousand
     const value = String(elem.value).replace(
@@ -24,7 +26,7 @@ const Stat = ({ ulClass, list }) => {
     );
 
     return (
-      <li key={elem.id}>
+      <li key={elem.id} className={style[elem.liClass]}>
         <span className={style.label}>{elem.label}</span>
         <span className={valueClass}>{value}</span>
       </li>
@@ -47,7 +49,11 @@ Stat.propTypes = {
       /**
        * If need new class for wrap value
        */
-      class: PropType.string,
+      valueClass: PropType.string,
+      /**
+       * If need new class for wrap value
+       */
+      liClass: PropType.string,
     }),
   ).isRequired,
 };

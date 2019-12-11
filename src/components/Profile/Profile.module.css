@@ -1,10 +1,11 @@
 .profile {
-  display: inline-block;
+  display: table;
   min-width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
 }
 
 .description {

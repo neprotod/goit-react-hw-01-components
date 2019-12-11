@@ -1,3 +1,5 @@
+/* Default */
+
 .state {
   display: flex;
   flex-wrap: nowrap;
@@ -6,6 +8,14 @@
   width: 100%;
   margin-top: 30px;
 }
+
+/* state-list */
+.state-list {
+  composes: state;
+  color: rgb(241, 241, 241);
+  margin-top: 0px;
+}
+
 .state li {
   display: flex;
   flex: 1 0 1px;
@@ -14,7 +24,7 @@
   align-items: center;
   padding: 20px 10px;
   background: rgb(241, 241, 241);
-  border-left: 1px solid;
+  border-left: 1px solid #ccc;
 }
 .state li:first-child {
   border: none;
@@ -27,6 +37,30 @@
   color: #999;
   margin-bottom: 5px;
 }
+.state-list .label {
+  font-size: 0.9rem;
+  color: rgb(241, 241, 241);
+}
 .quantity {
   font-weight: bold;
+}
+.percentage {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.percentage::after {
+  content: '%';
+}
+
+.docx {
+  background: #52c5f4 !important;
+}
+.pdf {
+  background: #a327f2 !important;
+}
+.mp3 {
+  background: #e64865 !important;
+}
+.psd {
+  background: #2bb9c4 !important;
 }
