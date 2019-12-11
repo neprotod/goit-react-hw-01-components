@@ -1,8 +1,11 @@
 import React from 'react';
 import PropType from 'prop-types';
 import shortid from 'shortid';
+import clsx from 'clsx';
 
 import Stat from '../Stat';
+
+import style from './Profile.module.css';
 
 /**
  *  Profile component
@@ -22,13 +25,17 @@ const Profile = ({ user }) => {
     { label: 'Likes', value: stats.likes, id: shortid() },
   ];
 
+  // Class
+  const classTag = clsx(style.tag, style.info);
+  const classlocation = clsx(style.location, style.info);
+
   return (
-    <div className="profile">
-      <div className="description">
-        <img alt="user avatar" className="avatar" src={user.avatar} />
-        <p className="name">{user.name}</p>
-        <p className="tag">@{user.tag}</p>
-        <p className="location">{user.location}</p>
+    <div className={style.profile}>
+      <div className={style.description}>
+        <img alt="user avatar" className={style.avatar} src={user.avatar} />
+        <p className={style.name}>{user.name}</p>
+        <p className={classTag}>@{user.tag}</p>
+        <p className={classlocation}>{user.location}</p>
 
         <Stat ulClass="state" list={toList} />
       </div>

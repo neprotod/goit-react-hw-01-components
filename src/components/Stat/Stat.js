@@ -1,6 +1,8 @@
 import React from 'react';
 import PropType from 'prop-types';
 
+import style from './Stat.module.css';
+
 /**
  * It's ul element
  *
@@ -13,17 +15,23 @@ import PropType from 'prop-types';
 const Stat = ({ ulClass, list }) => {
   // Create li elements
   const lis = list.map(elem => {
-    const newClass = elem.class ? elem.class : 'quantity';
+    const valueClass = elem.class ? style[elem.class] : style.quantity;
+
+    // Add , to thousand
+    const value = String(elem.value).replace(
+      /(?<=\d)(?=(\d{3})+(?!\d))/g,
+      '$&,',
+    );
 
     return (
       <li key={elem.id}>
-        <span className="label">{elem.label}</span>
-        <span className={newClass}>{elem.value}</span>
+        <span className={style.label}>{elem.label}</span>
+        <span className={valueClass}>{value}</span>
       </li>
     );
   });
 
-  return <ul className={ulClass}>{lis}</ul>;
+  return <ul className={style[ulClass]}>{lis}</ul>;
 };
 
 Stat.propTypes = {

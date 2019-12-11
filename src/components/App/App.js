@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './App.css';
+
 import Profile from '../Profile';
 // Get moke database date
 import user from '../../db/user.json';
