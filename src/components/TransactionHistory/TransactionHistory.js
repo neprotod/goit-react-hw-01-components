@@ -13,44 +13,33 @@ import style from './TransactionHistory.module.css';
  *  )
  */
 const TransactionHistory = ({ items }) => {
-  if (!items[0]) return null;
-  // We take all property names for th element
-  const thHead = Object.keys(items[0]).map((elem, index) => {
-    const key = index;
-    if (elem === 'id') return false;
-
-    const name = elem[0].toUpperCase() + elem.slice(1);
-    return <th key={key}>{name}</th>;
-  });
+  const transactionHeader = (
+    <tr>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Currency</th>
+    </tr>
+  );
 
   // Count items for calculation even
-  let countItems = 0;
-  const trs = items.map(elem => {
+  const transactionBody = items.map((item, index) => {
     // Calculation even
-    const trClass = (countItems % 2 === 1 && 'even') || 'not-even';
-    countItems += 1;
-
-    const tds = Object.keys(elem).map((td, index) => {
-      const key = index;
-      if (td === 'id') return false;
-
-      return <td key={key}>{elem[td]}</td>;
-    });
+    const trClass = (index % 2 === 1 && 'even') || 'not-even';
 
     return (
-      <tr className={style[trClass]} key={elem.id}>
-        {tds}
+      <tr className={style[trClass]} key={item.id}>
+        <td>{item.type}</td>
+        <td>{item.amount}</td>
+        <td>{item.currency}</td>
       </tr>
     );
   });
 
   return (
     <table className={style['transaction-history']}>
-      <thead>
-        <tr>{thHead}</tr>
-      </thead>
+      <thead>{transactionHeader}</thead>
 
-      <tbody>{trs}</tbody>
+      <tbody>{transactionBody}</tbody>
     </table>
   );
 };
@@ -59,6 +48,9 @@ TransactionHistory.propTypes = {
   items: PropType.arrayOf(
     PropType.shape({
       id: PropType.any.isRequired,
+      type: PropType.string.isRequired,
+      amount: PropType.any.isRequired,
+      currency: PropType.string.isRequired,
     }),
   ).isRequired,
 };
