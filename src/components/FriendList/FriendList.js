@@ -32,7 +32,7 @@ const FriendList = ({ friends }) => {
 FriendList.propTypes = {
   friends: PropType.arrayOf(
     PropType.shape({
-      id: PropType.any.isRequired,
+      id: PropType.oneOfType([PropType.number, PropType.string]).isRequired,
       name: PropType.string.isRequired,
       avatar: PropType.string.isRequired,
       isOnline: PropType.bool,

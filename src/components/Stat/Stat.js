@@ -40,7 +40,7 @@ Stat.propTypes = {
   ulClass: PropType.string.isRequired,
   list: PropType.arrayOf(
     PropType.shape({
-      id: PropType.any.isRequired,
+      id: PropType.oneOfType([PropType.number, PropType.string]).isRequired,
       label: PropType.string.isRequired,
       /**
        * It's value such as folowers, view ets.
