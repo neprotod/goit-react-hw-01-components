@@ -17,7 +17,7 @@ import style from './Profile.module.css';
  *  )
  */
 const Profile = ({ user }) => {
-  const { stats } = user;
+  const { stats, avatar, name, tag, location } = user;
 
   const toList = [
     { label: 'Followers', value: stats.followers, id: shortid() },
@@ -32,10 +32,10 @@ const Profile = ({ user }) => {
   return (
     <div className={style.profile}>
       <div className={style.description}>
-        <img alt="user avatar" className={style.avatar} src={user.avatar} />
-        <p className={style.name}>{user.name}</p>
-        <p className={classTag}>@{user.tag}</p>
-        <p className={classlocation}>{user.location}</p>
+        <img alt="user avatar" className={style.avatar} src={avatar} />
+        <p className={style.name}>{name}</p>
+        <p className={classTag}>@{tag}</p>
+        <p className={classlocation}>{location}</p>
 
         <Stat ulClass="state" list={toList} />
       </div>
